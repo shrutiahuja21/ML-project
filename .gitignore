@@ -1,1 +1,24 @@
 
+SageMath parsed files
+
+SageMath_parsed_files/ *.sage.py
+
+Virtual environments
+
+env/ venv/ .venv/ env.bak/ venv.bak/.artifacts
+
+Python artifacts
+
+pycache/ *.pyc *.pyo *.pyd .Python env/ venv/ *.egg-info/ dist/ build/ eggs/ parts/ var/ sdist/ develop-eggs/ .installed.cfg *.egg
+
+OS generated files
+
+.DS_Store Thumbs.db
+
+IDE/editor files
+
+*.sublime-workspace *.sublime-project *.vscode/ .idea/
+
+Other
+
+*.log *.bak *.swp
