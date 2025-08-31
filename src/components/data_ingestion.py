@@ -6,6 +6,8 @@ from dataclasses import dataclass
 
 from src.exception import CustomException
 from src.logger import logging
+from src.components.model_trainer import ModelTrainerConfig, ModelTrainer
+from src.components.data_transformation import DataTransformation   # 👈 make sure you have this file/class
 
 
 @dataclass 
@@ -23,7 +25,7 @@ class DataIngestion:
         logging.info('Entered the data ingestion method/component')
         try:
             # 👇 make sure this path matches your dataset location
-            df = pd.read_csv("dataa/StudentsPerformance.csv")
+            df = pd.read_csv("data/StudentsPerformance.csv")
 
             logging.info('Read the dataset as dataframe')
 
@@ -50,3 +52,19 @@ if __name__ == "__main__":
     obj = DataIngestion()
     train_path, test_path = obj.initiate_data_ingestion()
     print(f"Data saved at:\n Train -> {train_path}\n Test -> {test_path}")
+
+    # Data Transformation
+    data_transformation = DataTransformation()
+    train_arr, test_arr, _ = data_transformation.initiate_data_transformation(
+        train_path, test_path
+    )
+
+    # Model Training
+    model_trainer = ModelTrainer()
+    best_model_name, best_model_score, r2, best_model = model_trainer.initiate_model_trainer(
+        train_arr, test_arr
+    )
+
+    print(f"\n✅ Best Model: {best_model_name}")
+    print(f"📊 Cross-Validation Score: {best_model_score}")
+    print(f"🎯 Final Test R2 Score: {r2}")
