@@ -25,7 +25,7 @@ class DataIngestion:
         logging.info('Entered the data ingestion method/component')
         try:
             # 👇 make sure this path matches your dataset location
-            df = pd.read_csv("data/StudentsPerformance.csv")
+            df = pd.read_csv("dataa/StudentsPerformance.csv")
 
             logging.info('Read the dataset as dataframe')
 
